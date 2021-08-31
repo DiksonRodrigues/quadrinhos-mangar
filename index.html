@@ -1,0 +1,481 @@
+<!--This file is part of Cosmic-comics.
+
+Cosmic-Comics is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Cosmic-Comics is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Cosmic-Comics.  If not, see <https://www.gnu.org/licenses/>.--->
+<!DOCTYPE html>
+<html style="overflow-x: hidden">
+  <head>
+    <meta charset="UTF-8" />
+    <!--Declaring the stylesheets-->
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="css/materialize.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.materialdesignicons.com/2.4.85/css/materialdesignicons.min.css"
+    />
+    <!--Declaring the scripts-->
+    <script type="text/javascript" src="js/menu.js"></script>
+    <!--The name of the page-->
+    <title>Cosmic-Comics Collectionner</title>
+  </head>
+  <header>
+    <!--The navigation system-->
+    <nav style="-webkit-app-region: drag" class="fixed-top">
+      <div class="nav-wrapper" style="-webkit-app-region: drag">
+        <a class="brand-logo center" style="-webkit-app-region: drag"
+          ><img
+            src="Images/Logo.png"
+            alt=""
+            width="auto"
+            height="80px"
+            class="navbar-brand rotate linear infinite"
+            style="-webkit-app-region: drag" /><img
+            src="Images/LogoTxt.png"
+            alt=""
+            class="navbar-brand"
+            height="80px"
+            style="-webkit-app-region: drag"
+        /></a>
+
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li>
+            <a
+              class="btnw"
+              onclick="minimizeWindow()"
+              style="-webkit-app-region: no-drag"
+              ><i class="material-icons">minimize</i></a
+            >
+          </li>
+          <li>
+            <a
+              class="btnw"
+              onclick="maximizeWindow()"
+              style="-webkit-app-region: no-drag"
+              id="maximize"
+              ><i class="material-icons">check_box_outline_blank</i></a
+            >
+          </li>
+          <li>
+            <a
+              onclick="closeWindow()"
+              class="closebtn"
+              style="-webkit-app-region: no-drag"
+              ><i class="material-icons">close</i></a
+            >
+          </li>
+        </ul>
+        <!--The Navigation Menu-->
+        <button
+          class="btn"
+          data-bs-toggle="modal"
+          data-bs-target="#buttonp"
+          style="margin: 10px; height: 40px; -webkit-app-region: no-drag"
+          id="menuid"
+        >
+          <i class="material-icons" style="line-height: 1; height: 40px"
+            >menu</i
+          >
+        </button>
+        <button
+          class="btn"
+          style="margin: 5px; height: 40px; -webkit-app-region: no-drag"
+          id="GotoRoot"
+        >
+          <i class="material-icons" style="line-height: 1; height: 40px"
+            >north</i
+          >
+        </button>
+        <button
+          class="btn"
+          style="margin: 5px; height: 40px; -webkit-app-region: no-drag"
+          id="gotoback"
+        >
+          <i class="material-icons" style="line-height: 1; height: 40px"
+            >arrow_back</i
+          >
+        </button>
+        <button
+          class="btn"
+          style="margin: 5px; height: 40px; -webkit-app-region: no-drag"
+          onclick="continuereading()"
+          id="id_continuereading"
+        >
+          <i class="material-icons" style="line-height: 1; height: 40px"
+            >arrow_right</i
+          >
+        </button>
+      </div>
+    </nav>
+  </header>
+  <body>
+    <!-- Modal navigation -->
+    <div
+      class="modal animate__animated animate__zoomIn animate__faster"
+      id="buttonp"
+      tabindex="-1"
+      aria-labelledby="id_nav"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="id_nav">Navigation</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div id="controller">
+              <button
+                onclick="openFolder()"
+                class="btn"
+                style="margin: 10px"
+                id="opnfld"
+                data-bs-dismiss="modal"
+              >
+                <i class="material-icons">create_new_folder</i>
+              </button>
+              <button
+                class="btn"
+                data-bs-dismiss="modal"
+                style="margin: 10px"
+                data-bs-toggle="modal"
+                data-bs-target="#bm"
+                id="id_bm"
+              >
+                <i class="material-icons">bookmarks</i>
+              </button>
+              <button
+                class="btn"
+                style="margin: 10px"
+                onclick="obliviate();"
+                data-bs-dismiss="modal"
+                id="id_forgetfolder"
+              >
+                <i class="material-icons">delete</i>
+              </button>
+              <button
+                class="btn"
+                data-bs-dismiss="modal"
+                style="margin: 10px"
+                id="id_settings"
+                data-bs-toggle="modal"
+                data-bs-target="#settingsmodal"
+              >
+                <i class="material-icons">settings</i>
+              </button>
+
+              <button
+                class="btn"
+                style="margin: 10px"
+                onclick="refreshFolder();"
+                data-bs-dismiss="modal"
+                id="id_refreshFolder"
+              >
+                <i class="material-icons">refresh</i>
+              </button>
+
+              <button
+                class="btn"
+                style="margin: 10px"
+                onclick="OpenFileOnce()"
+                data-bs-dismiss="modal"
+                id="id_opnfile"
+              >
+                <i class="material-icons">note_add</i>
+              </button>
+              <button
+                class="btn"
+                data-bs-toggle="modal"
+                data-bs-target="#about"
+                style="margin: 10px; height: 40px"
+                data-bs-dismiss="modal"
+                id="id_info"
+              >
+                <i class="material-icons">info</i>
+              </button>
+              <button
+                class="btn"
+                data-bs-toggle="modal"
+                data-bs-target="#tips"
+                style="margin: 10px; height: 40px"
+                data-bs-dismiss="modal"
+                id="id_tips-btn"
+              >
+                <i class="material-icons">tips_and_updates</i>
+              </button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="close_nav"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal about-->
+    <div
+      class="modal animate__animated animate__zoomIn animate__faster"
+      id="about"
+      tabindex="-1"
+      aria-labelledby="id_about"
+      aria-hidden="true"
+      style="overflow: hidden"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="id_about">About</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" style="text-align: center">
+            <h1>Cosmic Comics</h1>
+            <img
+              src="Images/Logo.png"
+              alt=""
+              width="auto"
+              height="80px"
+              class="navbar-brand rotate linear infinite"
+            /><img
+              src="Images/LogoTxt.png"
+              alt=""
+              class="navbar-brand"
+              height="80px"
+            />
+            <p id="version"></p>
+            <p id="createdby">Created by Nytuo (Arnaud BEUX)</p>
+            <p id="usewhat"></p>
+            <p id="seewhere"></p>
+            <p id="project"></p>
+            <p id="translated"></p>
+            <p id="beta_test">THEO LEPRINCE</p>
+            <a href="#" onclick="shell.openExternal('https://nytuo.yo.fr/')"><img
+              src="Images/Nytuo_softwares.png"
+              alt=""
+              class=""
+              height="80px"
+            /></a>          
+              <a href="#" onclick="shell.openExternal('https://nytuo.yo.fr/')"><img
+              src="Images/Nytuo website.png"
+              alt=""
+              class=""
+              height="80px"
+            /></a>
+            
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="close_about"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Tips-->
+    <div
+      class="modal animate__animated animate__zoomIn animate__faster"
+      id="tips"
+      tabindex="-1"
+      aria-labelledby="id_tips"
+      aria-hidden="true"
+      style="overflow: hidden"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="id_tips">Tips:</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" style="text-align: center">
+            <h4 id="id_did_you_know"></h4>
+            <ul>
+              <li id="id_tip_1"></li>
+              <li id="id_tip_2"></li>
+              <li id="id_tip_3"></li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="close_about"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Bookmarks-->
+    <div
+      class="modal animate__animated animate__zoomIn animate__faster"
+      id="bm"
+      tabindex="-1"
+      aria-labelledby="id_bmm"
+      aria-hidden="true"
+      style="overflow: hidden"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="id_bmm">Bookmarks</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div id="bookmarkContainer"></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="close_bm"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal settings -->
+    <div
+      class="modal animate__animated animate__zoomIn animate__faster"
+      id="settingsmodal"
+      tabindex="-1"
+      aria-labelledby="id_settingsmod"
+      aria-hidden="true"
+      style="overflow: hidden"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="id_settingsmod">Settings</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p id="languages">Langues:</p>
+            <div id="lang_container"></div>
+            <button
+              id="id_btn_update_provider"
+              class="btn btn-primary"
+              onclick="changeUpdateProvider()"
+            >
+              Change Update Provider
+            </button>
+            <button
+              id="id_btn_appdata"
+              class="btn btn-primary"
+              onclick="OpenAppDataFolder()"
+            >
+              Open Cosmic-Comics Folder's In AppData
+            </button>
+            <button
+              id="id_btn_Temp"
+              class="btn btn-primary"
+              onclick="OpenTempDirectory()"
+            >
+              Open Cosmic-Comics Folder's In Temp
+            </button>
+            <button
+              id="id_btn_ComicsFolder"
+              class="btn btn-primary"
+              onclick="OpenComicsFolder()"
+            >
+              Open Loaded Comics Folder
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="close_settings"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="snackbar">Some text some message..</div>
+    <!--The Tutorial text-->
+    <p id="tutotxt" style="text-align: center; padding-top: 10%">
+      To start, import a directory or a single file by clicking on the Hamburger
+      menu and the directory/file icon.
+    </p>
+    <!--The overlay-->
+    <div id="overlay">
+      <div style="text-align: center; margin-top: 25%">
+        <div
+          class="spinner-border"
+          style="width: 70px; height: 70px"
+          role="status"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p id="overlaymsg" style="margin-top: 10px">
+          We take care of your comics
+        </p>
+      </div>
+    </div>
+    <div class="SpaceX"></div>
+    <!--List of the books-->
+    <div class="cards-list" id="ContainerExplorer"></div>
+    <!--Loading scripts-->
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>
