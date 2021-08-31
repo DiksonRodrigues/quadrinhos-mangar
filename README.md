@@ -1,7 +1,4 @@
 # Quadrinhos
-[![cosmiccomics](https://snapcraft.io/cosmiccomics/badge.svg)](https://snapcraft.io/cosmiccomics)
-[![cosmiccomics](https://snapcraft.io/cosmiccomics/trending.svg?name=0)](https://snapcraft.io/cosmiccomics)
-Open Source, Pure Javascript, NodeJS / Electron, Comics and Manga Viewer
 
 ## Introduction
 I wanted a software easy to use and looking great in which I can display all my comics/mangas collection and read them with cool features.
