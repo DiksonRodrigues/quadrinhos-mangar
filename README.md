@@ -1,4 +1,4 @@
-# CosmicComics
+# Quadrinhos
 [![cosmiccomics](https://snapcraft.io/cosmiccomics/badge.svg)](https://snapcraft.io/cosmiccomics)
 [![cosmiccomics](https://snapcraft.io/cosmiccomics/trending.svg?name=0)](https://snapcraft.io/cosmiccomics)
 Open Source, Pure Javascript, NodeJS / Electron, Comics and Manga Viewer
@@ -24,8 +24,7 @@ This is all you can do with this software and more:
 - Open a file by drag&Drop, or open it via the file explorer (only if you have set Cosmic-Comics as default app for this extension)
 - Continue reading where you stopped and more...
 
-## License
-The Cosmic-Comics is licensed under the GNU GPL v3 License, You can find info on it on the source code and on the internet.
+
 
 ## Installation
 ### For Windows
@@ -63,12 +62,6 @@ If you have selected AppImage you will have to delete the old one and replace it
 If you have selected other than thoses choices then you will deal with the normal installation.
 Note : Remerber to close the app when the update is download / the installation process begin
 
-## Languages
-You can change the language of the app in the settings by clicking on the flags.
-English (symbolized by the USA Flags) and French (symbolized by the French Flags) are made by me and officially supported (If you discover a traduction error, please tell me).
-But you can add your languages too!
-Dead simple, go the App folder (where the application is installed or launched), then open the "resources/app/languages" folder, on it you will see actual languages, duplicate(copy&paste) a JSON file (for example the english one), rename it with your country ID (for the flags (english = us.json to display the American flag)). Open the file and start translating the values. When you have finished, then start the application and you will see on the settings the flags and when you click on it the language you made.
-Note: You can also open an issue if you want a language to be added or submit your own. In the last case, I will verified it, and add it to the project.
 
 ## Keyboard and Mouse shortcuts
 Home page (index, where your files are):
